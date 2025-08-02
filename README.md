@@ -1,6 +1,6 @@
 # Course Platform API
 
-A fully functional RESTful API for a course platform, built with Node.js, Express, and MongoDB. Includes user authentication, role-based authorization, course management, and enrollment features.
+A complete RESTful API for a course platform, built with Node.js, Express, and MongoDB. Includes user authentication, role-based authorization, course management, and enrollment features.
 
 ## Techs Used
 
@@ -14,13 +14,13 @@ A fully functional RESTful API for a course platform, built with Node.js, Expres
 ## Features
 
 ### Authentication & Security
-- User registration and login with encrypted passwords.
-- JWT-based authentication for secure route access.
-- Passwords hashed using bcrypt.
-- Role-based access control (`user`, `teacher`, `admin`).
+- User registration and login.
+- Authentication using JWT to secure route access.
+- bcrypt to hash passwords.
+- 3 main roles with diferent authorization (`user`, `teacher`, `admin`).
 
 ### Courses
-- Teachers and admins can create, edit, and delete courses.
+- Courses are created, edited and deleted by admins and teachers.
 - Courses include title, description, category, price, published status, and assigned teacher.
 - Regular users can view only published courses.
 
@@ -84,6 +84,14 @@ A fully functional RESTful API for a course platform, built with Node.js, Expres
 
 4. **Run the server**
     npm run dev
+
+## Deployment & Testing
+The API is deployed and running on Render at:
+https://course-platform-api-8owy.onrender.com
+
+You can test all endpoints live using Postman or any HTTP client by replacing your local URLs with the above URL.
+
+Note: The first request after a period of inactivity might take a few seconds due to Render’s server cold start.
 
 ## Future Improvements
 - Filtering and pagination
