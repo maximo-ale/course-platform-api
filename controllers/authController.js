@@ -91,6 +91,8 @@ exports.login = async(req, res) => {
         return res.status(500).json({message: 'Internal server error'});
     }
 }
+
+// Deletes a user by ID, also removes the user from all the courses they are enrolled in
 exports.deleteUser = async(req, res) => {
     try {
         const userToDelete = await User.findById(req.params.id);
@@ -101,7 +103,7 @@ exports.deleteUser = async(req, res) => {
 
         const userCourses = userToDelete.courses || [];
 
-        // Delete user from all the courses they were enrolled in.
+        // Delete user from all the courses they are enrolled in
         for (let courseId of userCourses){
             const course = await Course.findById(courseId);
             if (!course) continue;
@@ -112,6 +114,7 @@ exports.deleteUser = async(req, res) => {
             await course.save();
         }
 
+        // Delete the user document
         const deleteUser = await User.findByIdAndDelete(req.params.id);
 
         // Prepare response without sensitive info
