@@ -48,7 +48,7 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 
 ## Available Endpoints
 
-## Auth Endpoints
+## Auth
 
 | Method | Endpoint                | Description                    |
 |--------|-------------------------|-------------------------------|
@@ -57,7 +57,7 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 | POST   | /api/auth/login          | User login                    |
 | DELETE | /api/auth/delete/:id     | Delete a user by ID (admin)   |
 
-## Courses Endpoints
+## Courses
 
 | Method | Endpoint                                     | Description                        |
 |--------|----------------------------------------------|----------------------------------|
@@ -69,7 +69,7 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 | DELETE | /api/courses/delete/:courseId/student/:userId | Remove a student from a course    |
 | PATCH  | /api/courses/modify/:id                      | Modify a course by ID (teacher)   |
 
-## User Endpoints
+## User
 
 | Method | Endpoint                 | Description                         |
 |--------|--------------------------|-----------------------------------|
