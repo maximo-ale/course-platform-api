@@ -148,15 +148,3 @@ exports.showUsers = async(req, res) => {
         return res.status(500).json({message: 'Internal server error'});
     }
 }
-exports.deleteUsers = async(req, res) => {
-    try {
-        const result = await User.deleteMany();
-        res.status(200).json({
-            message: 'Users deleted successfully',
-            deletedCount: result.deletedCount,
-        });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).json({message: 'Internal server error'});
-    }
-}

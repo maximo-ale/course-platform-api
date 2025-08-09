@@ -48,30 +48,41 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 
 ## Available Endpoints
 
-### Auth
-- `POST /auth/register`
-- `POST /auth/login`
+## Auth Endpoints
 
-### Users
-- `GET /users` – Admin only
-- `DELETE /users/:id` – Admin only
-- `GET /me/courses` – User’s enrolled courses
+| Method | Endpoint                | Description                    |
+|--------|-------------------------|-------------------------------|
+| GET    | /api/auth/showUsers      | Show all users (admin only)   |
+| POST   | /api/auth/register       | Register a new user            |
+| POST   | /api/auth/login          | User login                    |
+| DELETE | /api/auth/delete/:id     | Delete a user by ID (admin)   |
 
-### Courses
-- `GET /courses` – View all published (user), or all (admin/teacher)
-- `POST /courses` – Create course (teacher/admin)
-- `PATCH /courses/:id` – Update own course (teacher) or any (admin)
-- `DELETE /courses/:id` – Delete course (admin)
+## Courses Endpoints
 
-### Enrollment
-- `POST /courses/:id/enroll` – Enroll in a course
-- `GET /me/courses` – View enrolled courses
+| Method | Endpoint                                     | Description                        |
+|--------|----------------------------------------------|----------------------------------|
+| GET    | /api/courses/get                             | Get courses for logged user       |
+| GET    | /api/courses/getAll                          | Get all courses (admin only)      |
+| GET    | /api/courses/get/:id                         | Get course by ID                  |
+| POST   | /api/courses/create                          | Create a course (teacher only)    |
+| DELETE | /api/courses/delete/:id                      | Delete a course by ID (teacher)   |
+| DELETE | /api/courses/delete/:courseId/student/:userId | Remove a student from a course    |
+| PATCH  | /api/courses/modify/:id                      | Modify a course by ID (teacher)   |
+
+## User Endpoints
+
+| Method | Endpoint                 | Description                         |
+|--------|--------------------------|-----------------------------------|
+| POST   | /api/user/enroll/:id     | Enroll logged user to a course    |
+| GET    | /api/user/courses        | Show courses user is enrolled in  |
+| GET    | /api/user/created        | Show courses created by teacher   |
+| DELETE | /api/user/leave/:id      | Leave a course                    |
 
 ## Setup Instructions
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/your-username/course-platform-api.git
+   git clone https://github.com/maximo-ale/course-platform-api.git
    cd course-platform-api
 
 2. **Install dependencies**
@@ -93,12 +104,6 @@ You can test all endpoints live using Postman or any HTTP client by replacing yo
 
 Note: The first request after a period of inactivity might take a few seconds due to Render’s server cold start.
 
-## Future Improvements
-- Filtering and pagination
-- Course ratings and comments
-- File uploads for course materials
-- Email verification & password reset
-- Admin dashboard (frontend)
-
 ## Author
-- Máximo Ale - Backend developer in training.
+Developed by Máximo Ale
+Contact: maximoale20000@gmail.com

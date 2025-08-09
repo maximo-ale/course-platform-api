@@ -44,7 +44,7 @@ exports.getCoursesForUsers = async(req, res) => {
     };
 }
 
-// Get all the courses, including unpublished ones (only for teachers and admins)
+// Get all the courses, including unpublished ones (only for admins)
 exports.getCourses = async (req, res) => {
     try {
         const courses = await Course.find();
@@ -62,10 +62,11 @@ exports.getCourses = async (req, res) => {
 // Return a specific course by ID and include teacher's info.
 exports.getCourse = async (req, res) => {
     try {
-        const course = await Course.findById(req.params.id).populate('teacher');
+        const course = await Course.findOne({_id: req.params.id, published: true}).populate('teacher');
         if (!course){
             return res.status(404).json({message: 'Course not found'});
         }
+
         res.status(200).json({
             message: 'Course found successfully',
             course,
@@ -78,7 +79,6 @@ exports.getCourse = async (req, res) => {
 
 // Create a new course (only accessible to admins and teachers)
 exports.createCourse = async (req, res) => {
-    // Destructure key info
     const {
         title,
         description,
@@ -122,7 +122,7 @@ exports.createCourse = async (req, res) => {
             return res.status(400).json({message: "Title must be unique"});
         }
         console.error(err);
-        return res.status(500).json({message: "Internal error"});
+        return res.status(500).json({message: "Internal server error"});
     }
 }
 
