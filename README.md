@@ -4,19 +4,19 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 
 ## Quick Start
 
-# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/maximo-ale/course-platform-api.git
 cd course-platform-api
 
-# 2. Install dependencies
+2. Install dependencies
 npm install
 
-# 3. Create .env file
+3. Create .env file
 echo "PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret" > .env
 
-# 4. Start the server
+4. Start the server
 npm run dev
 
 ## Deployment & Testing
