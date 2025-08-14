@@ -4,7 +4,7 @@ const Course = require('../models/Course');
 // Enroll in a course
 exports.enroll = async (req, res) => {
     try {
-        const user = await User.findById(req.userId).select('courses -_id');
+        const user = await User.findById(req.userId).select('courses');
         const courseToEnroll = await Course.findById(req.params.id);
 
         if (!courseToEnroll) {
