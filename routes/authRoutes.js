@@ -11,7 +11,7 @@ router.get('/showUsers', auth, onlyAdmin, showUsers);
 router.post('/register',
     body('name').isString().withMessage('Name must be a string').bail().trim().notEmpty().withMessage('Invalid name'),
     body('email').isEmail().normalizeEmail().withMessage('Invalid email'),
-    body('password').isString().withMessage('Password must be a string').bail().trim().isLength({min: 6}).withMessage('Password must be at least 4 characters long'),
+    body('password').isString().withMessage('Password must be a string').bail().trim().isLength({min: 6}).withMessage('Password must be at least 6 characters long'),
     validateRequest , register);
 
 router.post('/login',
