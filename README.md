@@ -12,11 +12,16 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 - npm install
 
 3. Copy '.env.example' to '.env'
-- cp .env.example .env
+- On Windows CMD:
+copy .env.example .env
+- On Windows PowerShell:
+Copy-Item .env.example .env
+- On Linux/macOS:
+cp .env.example .env
 
 4. The '.env' file already includes a test user and a public database:
 - PORT=3000
-- MONGO_URI=mongodb+srv://testUser:testPassword@cluster0.abcde.mongodb.net/testDB?retryWrites=true&w=majority
+- MONGO_URI=mongodb+srv://testUser:testPassword@cluster.uzqisyr.mongodb.net/?
 - JWT_SECRET=JWT_example
 
 4. Start the server
