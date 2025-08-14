@@ -2,13 +2,38 @@
 
 A complete RESTful API for a course platform, built with Node.js, Express, and MongoDB. Includes user authentication, role-based authorization, course management, and enrollment features.
 
+## Quick Start
+
+# 1. Clone the repository
+git clone https://github.com/maximo-ale/course-platform-api.git
+cd course-platform-api
+
+# 2. Install dependencies
+npm install
+
+# 3. Create .env file
+echo "PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret" > .env
+
+# 4. Start the server
+npm run dev
+
+## Deployment & Testing
+The API is deployed and running on Render at:
+https://course-platform-api-8owy.onrender.com
+
+You can test all endpoints live using Postman or any HTTP client by replacing your local URLs with the above URL.
+
+Note: The first request after a period of inactivity might take a few seconds due to Render’s server cold start.
+
 ## Techs Used
 
 - Node.js
 - Express.js
 - MongoDB with Mongoose
 - JSON Web Tokens
-- bcryptjs
+- bcrypt
 - Postman
 
 ## Features
@@ -77,32 +102,6 @@ A complete RESTful API for a course platform, built with Node.js, Express, and M
 | GET    | /api/user/courses        | Show courses user is enrolled in  |
 | GET    | /api/user/created        | Show courses created by teacher   |
 | DELETE | /api/user/leave/:id      | Leave a course                    |
-
-## Setup Instructions
-
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/maximo-ale/course-platform-api.git
-   cd course-platform-api
-
-2. **Install dependencies**
-    npm install
-
-3. **Create a '.env' file**
-    PORT=5000
-    MONGO_URI=your_mongodb_uri
-    JWT_SECRET=your_secret
-
-4. **Run the server**
-    npm run dev
-
-## Deployment & Testing
-The API is deployed and running on Render at:
-https://course-platform-api-8owy.onrender.com
-
-You can test all endpoints live using Postman or any HTTP client by replacing your local URLs with the above URL.
-
-Note: The first request after a period of inactivity might take a few seconds due to Render’s server cold start.
 
 ## Author
 Developed by Máximo Ale
