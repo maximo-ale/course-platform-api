@@ -4,23 +4,16 @@ const bcrypt = require('bcrypt');
 const generateToken = require('../utils/generateToken');
 
 exports.register = async (req, res) => {
-    const {name, email, password, role} = req.body;
-
-    // Validate role if provided
-    const validRoles = ['user', 'teacher', 'admin'];
-    if (req.body.role && !validRoles.includes(req.body.role)){
-        return res.status(400).json({message: 'Invalid role value'});
-    }
-
-    // Check required fields are present
-    if (!name || !email || !password
-        || name.trim() === "" || email.trim() 
-        === "" || password.trim() === "")
-    {
-        return res.status(400).json({message: 'Invalid information'});
-    }
     try {
-        // Hash password to protect valuable data
+        const {name, email, password, role} = req.body;
+
+        // Validate role if provided
+        const validRoles = ['user', 'teacher', 'admin'];
+        if (req.body.role && !validRoles.includes(req.body.role)){
+            return res.status(400).json({message: 'Invalid role value'});
+        }
+        
+        // Hash password to protect sensitive data
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             name,
@@ -51,9 +44,13 @@ exports.register = async (req, res) => {
     }
 }
 exports.login = async(req, res) => {
-    const {name, email, password} = req.body;
-
     try {
+        const {name, email, password} = req.body;
+
+        if (!name && !email){
+            return res.status(400).json({message: 'At least name or email must be provided'});
+        }
+        
         // Find user by name or email
         const user = await User.findOne({
             $or: [
@@ -75,7 +72,7 @@ exports.login = async(req, res) => {
         // Generate JWT
         token = generateToken({userId: user._id, role: user.role});
 
-        // Prepare user response without sensitive info
+        // Prepare user response without providing sensitive info
         const userResponse = {
             id: user._id,
             name,
@@ -118,7 +115,7 @@ exports.deleteUser = async(req, res) => {
         // Delete the user document
         const deleteUser = await User.findByIdAndDelete(req.params.id);
 
-        // Prepare response without sensitive info
+        // Prepare response without providing sensitive info
         const userResponse = {
             id: deleteUser._id,
             email: deleteUser.email,

@@ -79,29 +79,17 @@ exports.getCourse = async (req, res) => {
 
 // Create a new course (only accessible to admins and teachers)
 exports.createCourse = async (req, res) => {
-    const {
-        title,
-        description,
-        category,
-        price,
-        published,
-    } = req.body;
-
-    const teacher = req.userId;
-
-    // Check if any field is missing
-    if (!title || !description || !category || price == null
-        || title.trim() === "" || description.trim() === ""
-        || category.trim() === ""
-    ){
-        return res.status(400).json({message: 'Missing mandatory fields'});
-    }
-
-    // Validate price is a number
-    if (typeof price != 'number' || price < 0){
-        return res.status(400).json({message: 'Price must be a positive number'});
-    }
     try {
+        const {
+            title,
+            description,
+            category,
+            price,
+            published,
+        } = req.body;
+
+        const teacher = req.userId;
+
         // Creates new course
         const newCourse = new Course({
             title,
@@ -114,10 +102,12 @@ exports.createCourse = async (req, res) => {
 
         await newCourse.save();
 
-        res.status(201).json({message: 'Course created successfully'});
+        res.status(201).json({
+            message: 'Course created successfully',
+            newCourse,
+        });
 
     } catch (err) {
-        // Handle duplicate key error
         if (err.code === 11000){
             return res.status(400).json({message: "Title must be unique"});
         }
@@ -128,19 +118,13 @@ exports.createCourse = async (req, res) => {
 
 // Teachers may modify only their courses, but admins can modify any course.
 exports.modifyCourse = async (req, res) => {
-
-    const {title, description, category, price} = req.body;
-
-    // Validate input fields
-    if (title?.trim() === "" ||
-        description?.trim() === "" || 
-        category?.trim() === "" || 
-        (price !== undefined && typeof price !== 'number')
-    ){
-        return res.status(400).json({message: 'Missing or invalid mandatory fields'});
-    }
-
     try {
+        const {teacher, students} = req.body;
+
+        if (teacher || students){
+            return res.status(400).json({message: 'Neither teachers nor students can be modified here'});
+        }
+
         // Update course and save it
         const course = await Course.findByIdAndUpdate(
             req.params.id,
@@ -182,10 +166,12 @@ exports.deleteStudent = async (req, res) => {
         if (!studentToDelete.courses.includes(req.params.courseId)) {
             return res.status(400).json({message: 'User is not enrolled in this course'});
         }
+
         // Remove course from student's list
         studentToDelete.courses = studentToDelete.courses.filter(
             courseId => !courseId.equals(req.params.courseId)
         );
+        
         // Remove student from course's list
         course.students = course.students.filter(
             studentId => !studentId.equals(req.params.userId)

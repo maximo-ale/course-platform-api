@@ -42,6 +42,7 @@ Note: The first request after a period of inactivity might take a few seconds du
 - MongoDB with Mongoose
 - JSON Web Tokens
 - bcrypt
+- express-validator
 - Postman
 
 ## Features
