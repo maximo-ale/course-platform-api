@@ -35,6 +35,19 @@ You can test all endpoints live using Postman or any HTTP client by replacing yo
 
 Note: The first request after a period of inactivity might take a few seconds due to Render’s server cold start.
 
+## Database Reset for Demo
+
+This project includes a script to reset the database and load test data automatically when the server starts with:
+
+RESET_DB_ON_START=true
+
+Notes:
+
+Only for demo/testing purposes.
+
+It is disabled by default (RESET_DB_ON_START=false) in production to preserve real data.
+
+This ensures each recruiter or tester starts with a clean environment.
 ## Techs Used
 
 - Node.js

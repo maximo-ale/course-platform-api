@@ -71,19 +71,8 @@ exports.login = async(req, res) => {
 
         // Generate JWT
         token = generateToken({userId: user._id, role: user.role});
-
-        // Prepare user response without providing sensitive info
-        const userResponse = {
-            id: user._id,
-            name,
-            email,
-            role: user.role,
-        };
         
-        res.status(200).json({
-            token,
-            user: userResponse
-        });
+        res.status(200).json({ token });
     } catch (err) {
         console.log(err);
         return res.status(500).json({message: 'Internal server error'});
