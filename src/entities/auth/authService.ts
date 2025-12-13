@@ -1,7 +1,7 @@
-import { BadRequestError, NotAuthorizedError, NotFoundError } from '../../utils/errors.js';
+import { BadRequestError, NotAuthorizedError, NotFoundError } from '../../utils/errors.ts';
 import bcrypt from 'bcrypt';
-import authDB from './authRepository.js';
-import generateToken from '../../utils/generateToken.js';
+import authDB from './authRepository.ts';
+import generateToken from '../../utils/generateToken.ts';
 
 interface UserRegister{
     name: string,

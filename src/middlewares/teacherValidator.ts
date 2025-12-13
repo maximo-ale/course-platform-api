@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
-import { AppError, ForbiddenError, NotAuthorizedError, NotFoundError } from '../utils/errors.js';
-import courseDB from '../entities/courses/courseRepository.js';
+import { ForbiddenError, NotAuthorizedError, NotFoundError } from '../utils/errors.ts';
+import courseDB from '../entities/courses/courseRepository.ts';
 
 // Verify if teacher is modifying its own course
 const teacherValidator = (courseIdParam = 'id') => {

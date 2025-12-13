@@ -1,4 +1,4 @@
-import pool from '../config/db.js';
+import pool from '../config/db.ts';
 
 const resetDB = async() => {
     // await pool.query(`DROP TABLE IF EXISTS users CASCADE`);

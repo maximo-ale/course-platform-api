@@ -4,12 +4,12 @@ dotenv.config();
 import express from 'express';
 const app = express();
 
-import authRoutes from './entities/auth/authRoutes.js'
-import courseRoutes from './entities/courses/courseRoutes.js';
-import userRoutes from './entities/user/userRoutes.js';
-import errorHandler from './middlewares/errorHandler.js';
-import createTables from './utils/createTables.js';
-import resetDB from './utils/resetDB.js';
+import authRoutes from './entities/auth/authRoutes.ts'
+import courseRoutes from './entities/courses/courseRoutes.ts';
+import userRoutes from './entities/user/userRoutes.ts';
+import errorHandler from './middlewares/errorHandler.ts';
+import createTables from './utils/createTables.ts';
+import resetDB from './utils/resetDB.ts';
 
 const PORT: string | number = process.env.PORT || 3000;
 

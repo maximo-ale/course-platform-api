@@ -1,7 +1,5 @@
-import { AppError, BadRequestError, NotFoundError } from "../../utils/errors.js";
-
 import type { Request, Response } from 'express';
-import userService from "./userService.js";
+import userService from "./userService.ts";
 
 class UserController{
     // Enroll in a course

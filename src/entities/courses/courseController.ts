@@ -1,6 +1,5 @@
 import type { Request, Response } from 'express';
-import { BadRequestError, NotFoundError } from '../../utils/errors.js';
-import courseService from './courseService.js';
+import courseService from './courseService.ts';
 
 interface Query{
     title?: string,

@@ -1,6 +1,6 @@
-import { BadRequestError, NotFoundError } from "../../utils/errors.js";
-import courseDB from "../courses/courseRepository.js";
-import userDB from "./userRepository.js";
+import { BadRequestError, NotFoundError } from "../../utils/errors.ts";
+import courseDB from "../courses/courseRepository.ts";
+import userDB from "./userRepository.ts";
 
 interface FullCourseInfo{
     id: number,

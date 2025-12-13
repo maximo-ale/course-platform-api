@@ -1,12 +1,12 @@
 import express from 'express';
 const router = express.Router();
 
-import controller from './courseController.js';
-import {auth, onlyAdmin, teacherAuth} from '../../middlewares/authMiddleware.js';
-import teacherValidator from '../../middlewares/teacherValidator.js';
+import controller from './courseController.ts';
+import {auth, onlyAdmin, teacherAuth} from '../../middlewares/authMiddleware.ts';
+import teacherValidator from '../../middlewares/teacherValidator.ts';
 
-import validate from '../../middlewares/validateRequest.js';
-import { createCourseSchema, getCourseByIDSchema, getCoursesSchema, updateUserSchema, removeUserSchema } from './courseSchemas.js';
+import validate from '../../middlewares/validateRequest.ts';
+import { createCourseSchema, getCourseByIDSchema, getCoursesSchema, updateUserSchema, removeUserSchema } from './courseSchemas.ts';
 
 router.get('/',
     validate(getCoursesSchema, 'query'),
