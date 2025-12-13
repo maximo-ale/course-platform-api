@@ -1,6 +1,6 @@
 # Course Platform API
 
-A complete RESTful API for a course platform, built with Node.js, Express, and MongoDB. Includes user authentication, role-based authorization, course management, and enrollment features.
+A complete RESTful API for a course platform, built with Node.js, Express, and PostgreSQL. Includes user authentication, role-based authorization, course management, and enrollment features.
 
 ## Quick Start
 
@@ -18,11 +18,6 @@ copy .env.example .env
 Copy-Item .env.example .env
 - On Linux/macOS:
 cp .env.example .env
-
-4. The '.env' file already includes a test user and a public database:
-- PORT=3000
-- MONGO_URI=mongodb+srv://testUser:testPassword@cluster.uzqisyr.mongodb.net/?
-- JWT_SECRET=JWT_example
 
 4. Start the server
 - npm start
@@ -52,10 +47,10 @@ This ensures each recruiter or tester starts with a clean environment.
 
 - Node.js
 - Express.js
-- MongoDB with Mongoose
+- PostgreSQL
 - JSON Web Tokens
 - bcrypt
-- express-validator
+- schemas
 - Postman
 
 ## Features
