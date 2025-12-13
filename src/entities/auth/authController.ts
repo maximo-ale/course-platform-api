@@ -1,9 +1,5 @@
-import bcrypt from 'bcrypt';
-import generateToken from '../../utils/generateToken.ts';
 import type { Request, Response } from 'express';
-import { BadRequestError, NotAuthorizedError, NotFoundError } from '../../utils/errors.ts';
 import authService from './authService.ts';
-import pool from '../../config/db.ts';
 
 class AuthController{
     async register(req: Request, res: Response){
