@@ -8,10 +8,7 @@ A complete RESTful API for a course platform, built with Node.js, Express, and P
 - git clone https://github.com/maximo-ale/course-platform-api.git
 - cd course-platform-api
 
-2. Install dependencies
-- npm install
-
-3. Copy '.env.example' to '.env'
+2. Copy '.env.example' to '.env'
 - On Windows CMD:
 copy .env.example .env
 - On Windows PowerShell:
@@ -19,8 +16,8 @@ Copy-Item .env.example .env
 - On Linux/macOS:
 cp .env.example .env
 
-4. Start the server
-- npm start
+3. Start the server
+- docker compose up --build
 
 ## Deployment & Testing
 The API is deployed and running on Render at:
@@ -43,6 +40,7 @@ Only for demo/testing purposes.
 It is disabled by default (RESET_DB_ON_START=false) in production to preserve real data.
 
 This ensures each recruiter or tester starts with a clean environment.
+
 ## Techs Used
 
 - Node.js
@@ -50,8 +48,8 @@ This ensures each recruiter or tester starts with a clean environment.
 - PostgreSQL
 - JSON Web Tokens
 - bcrypt
-- schemas
-- Postman
+- Zod
+- Docker
 
 ## Features
 
@@ -85,7 +83,7 @@ This ensures each recruiter or tester starts with a clean environment.
 - Node_modules
 - Routes
 - Utils
-- server.js
+- server.ts
 - .env (ignored)
 
 ## Available Endpoints

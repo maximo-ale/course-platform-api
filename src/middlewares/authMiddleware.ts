@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import type {Request, Response, NextFunction} from 'express';
-import { AppError, ForbiddenError, NotAuthorizedError } from '../utils/errors.ts';
-import authDB from '../entities/auth/authRepository.ts';
+import { AppError, ForbiddenError, NotAuthorizedError } from '../utils/errors.js';
+import authDB from '../entities/auth/authRepository.js';
 
 interface JWTCustom extends jwt.JwtPayload{
     userId: string,

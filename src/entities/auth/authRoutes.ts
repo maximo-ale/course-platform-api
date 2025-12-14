@@ -1,11 +1,11 @@
 import express from'express';
 const router = express.Router();
 
-import controller from './authController.ts';
-import {auth, onlyAdmin} from '../../middlewares/authMiddleware.ts';
+import controller from './authController.js';
+import {auth, onlyAdmin} from '../../middlewares/authMiddleware.js';
 
-import validate from '../../middlewares/validateRequest.ts';
-import { idSchema, loginSchema, registerSchema } from './authSchemas.ts';
+import validate from '../../middlewares/validateRequest.js';
+import { idSchema, loginSchema, registerSchema } from './authSchemas.js';
 
 router.post('/register',
     validate(registerSchema, 'body'),

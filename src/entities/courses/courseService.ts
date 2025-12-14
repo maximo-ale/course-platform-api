@@ -1,7 +1,7 @@
-import { BadRequestError, NotFoundError } from "../../utils/errors.ts";
-import authDB from "../auth/authRepository.ts";
-import userDB from "../user/userRepository.ts";
-import courseDB from "./courseRepository.ts"
+import { BadRequestError, NotFoundError } from "../../utils/errors.js";
+import authDB from "../auth/authRepository.js";
+import userDB from "../user/userRepository.js";
+import courseDB from "./courseRepository.js"
 
 interface CreateCourse{
     title: string,

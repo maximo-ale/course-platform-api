@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import userService from "./userService.ts";
+import userService from "./userService.js";
 
 class UserController{
     // Enroll in a course

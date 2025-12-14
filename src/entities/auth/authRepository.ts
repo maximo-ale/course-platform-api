@@ -1,4 +1,4 @@
-import pool from "../../config/db.ts";
+import pool from "../../config/db.js";
 
 interface UserRegister{
     name: string,
