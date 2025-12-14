@@ -1,4 +1,4 @@
-import pool from "../config/db.ts";
+import pool from "../config/db.js";
 
 const createTables = async() => {
     await pool.query(`

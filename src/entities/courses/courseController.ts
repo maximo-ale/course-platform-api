@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import courseService from './courseService.ts';
+import courseService from './courseService.js';
 
 interface Query{
     title?: string,
