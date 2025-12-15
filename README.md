@@ -17,7 +17,7 @@ Copy-Item .env.example .env
 cp .env.example .env
 
 3. Start the server
-- docker compose up --build
+- npm run docker-dev:up
 
 ## Deployment & Testing
 The API is deployed and running on Render at:
