@@ -1,8 +1,12 @@
 {
   "type": "module",
   "scripts": {
+    "docker-dev:up": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "docker-dev:down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v",
+    "docker-prod:up": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build",
+    "docker-prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "dev": "npm run build && node dist/server.js",
     "start": "node dist/server.js"
   },
   "dependencies": {
@@ -24,6 +28,7 @@
     "@types/node": "^24.3.1",
     "@types/pg": "^8.15.5",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.2"
   }
 }

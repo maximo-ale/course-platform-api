@@ -12,13 +12,15 @@ import resetDB from './utils/resetDB.js';
 
 const PORT: string | number = process.env.PORT || 3000;
 
-await waitForDB();
+const isProd: boolean = process.env.ENVIRONMENT === 'production';
 
-if (process.env.RESET_DB_ON_START?.toLowerCase() === "true"){
-    await resetDB();
+if (!isProd){
+    await waitForDB();
+    await createTables();
+        if (process.env.RESET_DB_ON_START?.toLowerCase() === "true"){
+           await resetDB();
+        }
 }
-
-await createTables();
 
 app.use(express.json());
 app.use('/api/auth', authRoutes);
