@@ -1,0 +1,25 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: node_dev_container
+    command: npm run dev
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=deveolpment
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+  db:
+    container_name: db_dev_container
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+
+volumes:
+  db_volume:

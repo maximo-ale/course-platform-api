@@ -1,27 +1,9 @@
 services:
   node:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: node_container
-    env_file:
-      - .env
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/app
-      - /app/node_modules
     depends_on:
-      - db 
+      - db
   db:
     image: postgres:16-alpine
-
-    container_name: db_container
-
-    ports:
-      - 5432:5432
-    env_file:
-      - .env
     volumes:
       - db_volume:/var/lib/postgresql/data
 

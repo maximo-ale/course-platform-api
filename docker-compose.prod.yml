@@ -1,0 +1,21 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_container
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=production
+    ports:
+      - 3000:3000
+  db:
+    container_name: db_container
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+
+volumes:
+  db_volume:
